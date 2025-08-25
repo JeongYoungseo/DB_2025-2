@@ -1,4 +1,5 @@
--- DDL
+-- DDL(데이터 정의어)
+
 -- 테이블 생성
 create table 고객(
     고객아이디 VARCHAR(20) not null primary key, 
@@ -41,3 +42,26 @@ create table 배송업체(
 -- 테이블 변경
 alter table 고객 add 가입날짜 date;
 alter table 고객 drop COLUMN 가입날짜;
+
+-- 테이블 변경: 체크 제약조건 추가
+alter table 고객 add CONSTRAINT check_age check(나이>=20);
+
+-- 테이블 변경: 체크 제약조건 삭제
+alter table 고객 drop CONSTRAINT check_age;
+
+-- 테이블 삭제
+drop table 배송업체;
+
+-- DML(데이터 조작어)
+
+-- 고객 테이블에 행 삽입(추가)
+insert into 고객 values('apple', '정소화', 20, 'Gold', '학생', 1000);
+insert into 고객 values('banana', '김선우', 25, 'Vip', '간호사', 2500);
+insert into 고객 values('carrot', '고명석', 28, 'Gold', '교사', 4500);
+insert into 고객 values('orange', '김명욱', 22, 'Silver', '학생', 0);
+insert into 고객 values('melon', '성원용', 35, 'Gold', '회사원', 5000);
+insert into 고객(고객아이디, 고객이름, 등급, 직업, 적립금) values('peach', '오형준', 'Gold', '교사', 4500);
+insert into 고객 values('pear', '최강주', 31, 'Silver', '회사원', 500);
+
+-- 테이블 전체 조회
+select * from 고객;
